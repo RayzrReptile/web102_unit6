@@ -1,5 +1,6 @@
 import React, { Component, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import CoinChart from "./CoinChart";
 
 const CoinDetail = () => {
     let params = useParams();
@@ -89,6 +90,10 @@ const CoinDetail = () => {
                             </tr>
                         </tbody>
                     </table>
+                    <CoinChart
+                        symbol={params.symbol}
+                        market={fullDetails.numbers[params.symbol].USD.MARKET}
+                    />
                 </div>
             ) : (
                 <p>Hello...</p>
