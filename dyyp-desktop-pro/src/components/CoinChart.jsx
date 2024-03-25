@@ -6,7 +6,8 @@ import {
     XAxis,
     YAxis,
     Tooltip,
-    Label
+    Label,
+    ResponsiveContainer
 } from "recharts";
 
 const CoinChart = ({ symbol, market }) => {
@@ -45,43 +46,47 @@ const CoinChart = ({ symbol, market }) => {
       return (
         <div>
           {histData ? (// rendering only if API call actually returned us data
-            <div>
+            <div className="chart-container">
                 <br></br>
-                <h2>30-Day Price Data for {symbol}</h2>
+                <div className="chart-title">
+                    <h2>30-Day Price Data for {symbol}</h2>
+                </div>
                 <div className="chart-wrapper">
-                    <LineChart
-                        width={1000}
-                        height={400}
-                        data={cleanData(histData)}
-                        margin={{
-                            top: 10,
-                            right: 30,
-                            left: 20,
-                            bottom: 30,
-                        }}
-                        >
-                        <Line
-                            type="monotone"
-                            dataKey="open price"
-                            stroke="#8884d8"
-                            activeDot={{ r: 5 }}
-                        />
-                        <CartesianGrid strokeDasharray="5 5" />
-                        <XAxis dataKey="time" interval={2} angle={20} dx={20} dy={-5}>
-                            <Label value="Date and Time" offset={0} position="insideBottom" dy={30}/>
-                        </XAxis>
-                    
-                        <YAxis
-                            label={{
-                            value: "Price",
-                            angle: -90,
-                            dx: -15,
-                            position: "insideLeft",
-                            textAnchor: "middle",
+                    <ResponsiveContainer width="100%" height="100%">
+                        <LineChart
+                            width={1000}
+                            height={400}
+                            data={cleanData(histData)}
+                            margin={{
+                                top: 10,
+                                right: 30,
+                                left: 20,
+                                bottom: 30,
                             }}
-                        />
-                        <Tooltip />
-                    </LineChart>
+                            >
+                            <Line
+                                type="monotone"
+                                dataKey="open price"
+                                stroke="#5DAB50"
+                                activeDot={{ r: 5 }}
+                            />
+                            <CartesianGrid strokeDasharray="5 5" />
+                            <XAxis dataKey="time" interval={2} angle={20} dx={20} dy={-5}>
+                                <Label value="Date and Time" offset={0} position="insideBottom" dy={30}/>
+                            </XAxis>
+                        
+                            <YAxis
+                                label={{
+                                value: "Price",
+                                angle: -90,
+                                dx: -15,
+                                position: "insideLeft",
+                                textAnchor: "middle",
+                                }}
+                            />
+                            <Tooltip />
+                        </LineChart>
+                    </ResponsiveContainer>
                 </div>  
             </div>
           ) : null}
