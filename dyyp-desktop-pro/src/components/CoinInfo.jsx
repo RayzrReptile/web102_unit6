@@ -6,19 +6,28 @@ const CoinInfo = ({image, name, symbol}) => {
     let [price, setPrice] = useState(null)
 
     useEffect(() => {
+        const controller = new AbortController();
+
         const getCoinPrice = () => {
-            let query = `https://min-api.cryptocompare.com/data/price?fsym=${symbol}&tsyms=USD&api_key=${import.meta.env.VITE_APP_ACCESS_KEY}`;
-            fetch(query)
-            .then(response => response.json())
-            .then(data => setPrice(data))
-            .catch(() => {
-                console.error;
-                console.log("Set price to null")
-                setPrice(null);
-            })
+            try {
+                let query = `https://min-api.cryptocompare.com/data/price?fsym=${symbol}&tsyms=USD&api_key=${import.meta.env.VITE_APP_ACCESS_KEY}`;
+                fetch(query, { signal: controller.signal })
+                .then(response => response.json())
+                .then(data => setPrice(data))
+                .catch(() => {
+                    console.error;
+                    console.log("Set price to null")
+                    setPrice(null);
+                })
+            } catch (error) {
+                if (error.name !== "AbortError") {
+                    console.error(error);
+                }
+            }
         }
 
         getCoinPrice();
+        return() => controller.abort();
     }, [symbol]);
 
     return <div className="coin-info-container">
