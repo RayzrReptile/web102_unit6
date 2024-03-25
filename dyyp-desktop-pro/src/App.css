@@ -54,6 +54,13 @@
   font-style: italic;
 }
 
+.header-search-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-top: 25px;
+}
+
 .searchbar {
   border: none;
   border-radius: 8px;
