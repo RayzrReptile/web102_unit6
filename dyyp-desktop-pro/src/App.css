@@ -1,0 +1,161 @@
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+
+  --green: #5DAB50;
+  --black: #1A1A1A;
+  --gray-D: #343434;
+  --gray-M: #494949;
+  --gray-L: #838383;
+}
+
+/* ============== HEADER SECTION ================ */
+
+.header-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: var(--green);
+  padding: 25px;
+  user-select: none;
+}
+
+.header-title-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: self-end;
+}
+
+.header-logo {
+  width: 250px;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--black);
+  font-size: 38px;
+  text-transform: uppercase;
+  vertical-align: bottom;
+  line-height: 0.8;
+  margin-left: 12px;
+}
+
+.searchbar {
+  border: none;
+  border-radius: 8px;
+  height: 55px;
+  width: 300px;
+  margin-right: 50px;
+
+  font-size: 32px;
+  padding: 12px;
+  font-family: Futura,Trebuchet MS,Arial,sans-serif; 
+  transition: all 0.25s;
+
+  &:focus-visible {
+    outline: none;
+    width: 350px;
+  }
+}
+
+/* ============== MAIN SECTION ================ */
+
+hr {
+  width: 90%;
+  border-color: var(--gray-D);
+}
+
+.main-section {
+  margin-top: 130px;
+}
+
+.found-results, .no-results {
+  text-align: left;
+  padding: 25px;
+  text-transform: uppercase;
+  font-size: 38px;
+  color: var(--gray-L);
+}
+.found-results h3, .no-results h3 {
+  margin: 0;
+}
+
+.no-results {
+  text-transform: uppercase;
+  font-size: 38px;
+  color: var(--gray-L);
+}
+
+/* ------- COIN ITEMS ------- */
+
+.crypto-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.coin-info-container {
+  min-width: 500px;
+  background-image: url("https://i.gifer.com/ZZ5H.gif");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.coin-info-item {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  background-color: var(--gray-M);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.coin-image {
+  height: 200px;
+  width: 200px;
+  border-radius: 8px;
+  background-color: var(--gray-L);
+  margin: 20px;
+}
+
+.info-wrapper {
+  width: 240px;
+  height: 200px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.coin-name {
+  width: inherit;
+  margin: 0;
+  font-size: 32px;
+  text-align: left;
+  line-height: 2.2rem;
+  overflow-wrap: break-word;
+}
+
+.coin-symbol {
+  font-size: 24px;
+  color: var(--gray-L);
+}
+
+.coin-price {
+  margin: 0;
+  color: var(--green);
+  text-transform: uppercase;
+}
