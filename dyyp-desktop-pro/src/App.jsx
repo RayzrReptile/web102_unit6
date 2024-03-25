@@ -42,21 +42,15 @@ function App() {
   return (
     <>
       <div className="App">
-        <section className="header-section">
-          <div className="header-title-wrapper">
-            <img draggable="false" src="DYYPLogoV6.png" alt="DYYP Logo" className="header-logo" />
-            <h3 className="subtitle">desktop</h3>
-          </div>
+        <section className="main-section">
           <div className="header-search-wrapper">
             <input 
               type="text" 
               className="searchbar"
-               placeholder='SEARCH...'
-               onChange={(inputString) => searchItems(inputString.target.value)}
+                placeholder='SEARCH...'
+                onChange={(inputString) => searchItems(inputString.target.value)}
             />
           </div>
-        </section>
-        <section className="main-section">
             {searchInput.length == 0 ? (
               <div className="crypto-list-container">
                 <div className="found-results">
