@@ -67,6 +67,12 @@
   }
 }
 
+/* ============== COIN DETAILS SECTION ================ */
+
+.details-container {
+  margin-top: 200px;
+}
+
 /* ============== MAIN SECTION ================ */
 
 hr {

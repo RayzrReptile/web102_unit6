@@ -1,7 +1,11 @@
+import CoinDetail from "../components/CoinDetail";
+
 const DetailView = () => {
-    return (
-        <></>
-    );
-  };
-  
-  export default DetailView;
+  return (
+    <div>
+      <CoinDetail />
+    </div>
+  );
+};
+
+export default DetailView;
