@@ -343,4 +343,34 @@ hr {
       width: 90%;
     }
   }
+
+  .details-top {
+    display: block;
+  }
+  .details-header {
+    margin-top: 20px;
+    text-align: left;
+    padding: 22px;
+    background-color: var(--gray-D);
+    border-radius: 0px;
+  }
+  .details-image {
+    border-radius: 12px;
+    margin: 12px;
+  }
+  .details-table {
+    margin: 0;
+  }
+
+  .chart-container {
+    display: block;
+  }
+  .chart-title {
+    display: block;
+  }
+  .chart-container h2 {
+    writing-mode: horizontal-tb;
+    font-size: 32px;
+  }
+  
 }
