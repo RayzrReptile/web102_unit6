@@ -226,6 +226,7 @@ hr {
   background-color: var(--gray-M);
   border-radius: 12px;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .coin-image {
@@ -258,10 +259,88 @@ hr {
 .coin-symbol {
   font-size: 24px;
   color: var(--gray-L);
+  margin: 0;
 }
 
 .coin-price {
   margin: 0;
   color: var(--green);
   text-transform: uppercase;
+}
+
+/* ============== EXTRA SECTION ================ */
+
+.not-found-container, .loading-container {
+  padding-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.not-found-img, .loading-icon {
+  max-width: 250px;
+}
+.not-found-header {
+  font-size: 64px;
+  margin: 15px;
+}
+.not-found-subtitle {
+  color: var(--gray-L);
+}
+
+@keyframes loading {
+  0% {
+    content: "";
+  }
+  25% {
+    content: ".";
+  }
+  50% {
+    content: "..";
+  }
+  75% {
+    content: "...";
+  }
+  100% {
+    content: "";
+  }
+}
+
+.loading-text::after {
+  content: "";
+  animation-name: loading;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+.loading-text {
+  font-size: 38px;
+}
+
+/* ============== MOBILE SECTION ================ */
+
+@media screen and (max-width: 1092px) {
+
+  .header-search-wrapper {
+    position: static;
+    padding: 20px;
+    width: 100%;
+  }
+
+  .searchbar {
+    border: none;
+    border-radius: 8px;
+    height: 55px;
+    width: 90%;
+    margin-right: 50px;
+  
+    font-size: 32px;
+    padding: 12px;
+    font-family: Futura,Trebuchet MS,Arial,sans-serif; 
+    transition: all 0.25s;
+  
+    &:focus-visible {
+      outline: none;
+      width: 90%;
+    }
+  }
 }

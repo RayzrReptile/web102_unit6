@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import CoinInfo from './components/CoinInfo';
+import Loading from './components/Loading'
 import './App.css'
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
   let [cryptoList, setCryptoList] = useState(null);
   let [searchResults, setSearchResults] = useState([]);
   let [searchInput, setSearchInput] = useState("");
+  let [listCount, setListCount] = useState(null);
 
   // Use Effect for Querying Data
   useEffect(() => {
@@ -52,23 +54,29 @@ function App() {
             />
           </div>
             {searchInput.length == 0 ? (
-              <div className="crypto-list-container">
-                <div className="found-results">
-                <h3>Showing all coins</h3>
-                </div>
-                <hr />
-                <ul className="crypto-list">
-                  {cryptoList && Object.entries(cryptoList.Data).map(([coin]) => 
-                    cryptoList.Data[coin].PlatformType=="blockchain" ? (
-                      <CoinInfo
-                        image={cryptoList.Data[coin].ImageUrl}
-                        name={cryptoList.Data[coin].FullName}
-                        symbol={cryptoList.Data[coin].Symbol}
-                      />
-                    ) : null
-                  )}
-                </ul>
-              </div>
+              <>
+                {cryptoList ? (
+                  <div className="crypto-list-container">
+                    <div className="found-results">
+                    <h3>Showing all coins</h3>
+                    </div>
+                    <hr />
+                    <ul className="crypto-list">
+                      {cryptoList && Object.entries(cryptoList.Data).map(([coin]) => 
+                        cryptoList.Data[coin].PlatformType=="blockchain" ? (
+                          <CoinInfo
+                            image={cryptoList.Data[coin].ImageUrl}
+                            name={cryptoList.Data[coin].FullName}
+                            symbol={cryptoList.Data[coin].Symbol}
+                          />
+                        ) : null
+                      )}
+                    </ul>
+                  </div>
+                ) : (
+                  <Loading></Loading>
+                )}
+              </>
             ) : (
               <div>
                 {searchResults.length > 0 ? (

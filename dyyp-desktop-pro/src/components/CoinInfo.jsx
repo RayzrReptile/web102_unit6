@@ -16,7 +16,6 @@ const CoinInfo = ({image, name, symbol}) => {
                 .then(data => setPrice(data))
                 .catch(() => {
                     console.error;
-                    console.log("Set price to null")
                     setPrice(null);
                 })
             } catch (error) {
@@ -52,7 +51,24 @@ const CoinInfo = ({image, name, symbol}) => {
                     </div>
                 </li>
             </Link>
-        ) : null}
+        ) : (
+            <Link to={`/coinDetails/${symbol}`} key={symbol} style={{ textDecoration: 'none', color: 'white' }}>
+                <li className="coin-info-item" key={symbol}>
+                    <div className="image-wrapper">
+                        <img 
+                        draggable="false"
+                        src={`https://www.cryptocompare.com${image}`} 
+                        alt={name} 
+                        className="coin-image" />
+                    </div>
+                    <div className="info-wrapper">
+                        <h2 className="coin-name">{name}</h2>
+                        <h4 className="coin-symbol">{symbol}</h4>
+                        <h2 className="coin-price">Price Unlisted</h2>
+                    </div>
+                </li>
+            </Link>
+        )}
     </div>
 };
 
